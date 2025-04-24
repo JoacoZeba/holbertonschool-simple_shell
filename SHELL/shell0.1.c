@@ -81,11 +81,11 @@ char *read_line(void)
  */
 void execute_command(char *line, char **envp)
 {
-	pid_t pid;
-	char *argv[2];
 
-	argv[0] = line;
-	argv[1] = NULL;
+	pid_t pid;
+	char **argv;
+
+	argv = phrase_arguments(line);
 
 	pid = fork();
 
