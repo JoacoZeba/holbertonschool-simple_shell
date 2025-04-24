@@ -75,7 +75,6 @@ char *read_line(void)
 
 	return (line);
 }
-
 /**
  * execute_command - forks and executes the command
  * @line: command path to run
@@ -84,8 +83,10 @@ char *read_line(void)
 void execute_command(char *line, char **envp)
 {
 	pid_t pid;
-	int status;
-	char *argv[] = {line, NULL};
+	char *argv[2];
+
+	argv[0] = line;
+	argv[1] = NULL;
 
 	pid = fork();
 
@@ -104,6 +105,6 @@ void execute_command(char *line, char **envp)
 	}
 	else
 	{
-		wait(&status);
+		wait(NULL);
 	}
 }
