@@ -8,7 +8,7 @@
 */
 char *trim_spaces(char *str)
 {
-	while (*str == ' ')
+	while (*str == ' ' || *str == '\t' || *str == '-')
 		str++;
 	return (str);
 }

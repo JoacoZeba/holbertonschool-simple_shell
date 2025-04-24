@@ -33,7 +33,11 @@ int main(int argc, char **argv, char **envp)
 			write(STDOUT_FILENO, "\n", 1);
 			break;
 		}
-	
+		if(strcmp(line, "exit") == 0)
+		{
+			free(line);
+			break;
+		}	
 			line = trim_spaces(line);
 		if (line[0] != '\0' && line [0] != ' ')
 		execute_command(line, envp);
