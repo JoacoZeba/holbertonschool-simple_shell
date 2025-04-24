@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/wait.h>
-
+#include "functions.h"
 void prompt(void);
 char *read_line(void);
 void execute_command(char *line, char **envp);
@@ -33,11 +33,10 @@ int main(int argc, char **argv, char **envp)
 			write(STDOUT_FILENO, "\n", 1);
 			break;
 		}
-
-		if (line[0] != '\0')
-			execute_command(line, envp);
-
-		free(line);
+	
+			line = trim_spaces(line);
+		if (line[0] != '\0' && line [0] != ' ')
+		execute_command(line, envp);
 	}
 
 	return (0);
